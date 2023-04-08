@@ -20,6 +20,8 @@ export const addBlogToDatabase = (blogData = {})=> {
     }
 }
 
+
+
 export const removeBlog = ({ id }) => (
     {
         type: "REMOVE_BLOG",
