@@ -10,7 +10,13 @@ export const addBlogToDatabase = (blogData = {})=> {
 
     return(dispatch)=>{
         const {title='', description='',dateAdded=0} =blogData;
-        const blog = {title,descripton,dateAdded}
+        const blog = {title,description,dateAdded};
+        database.ref('blogs').push(blog).then((res)=> {
+            dispatch(addBlog({
+                id: res.key,
+                ...blog
+            }))
+        })
     }
 }
 
