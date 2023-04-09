@@ -40,4 +40,18 @@ export const setBlogs = ( blogs)=> ({
     type : 'SET_BLOGS',
     blogs
 })
-
+export const getBlogsFromDatabase = ()=>{
+    return (dispatch) => {
+        return database.ref('blogs').once('value').then((snapshot)=>{
+            const blogs = [ ];
+            snapshot.forEach((blog)=>{
+                blogs.push({
+                    id: blog.key,
+                    ...blog.val()
+                })
+            })
+     dispatch(setBlogs(blogs));
+        })
+    }
+    
+}
