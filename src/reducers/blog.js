@@ -18,14 +18,13 @@ const blogReducers = (state = blogState,action) => {
                  return {...blog, ...action.updates}
             } else {
                 return blog;
-
-
             }
 
 
         })
         
-        
+        case 'SET_BLOGS':
+            return action.blogs;
 
 
         default : return state;

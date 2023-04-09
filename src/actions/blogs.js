@@ -18,7 +18,7 @@ export const addBlogToDatabase = (blogData = {})=> {
             }))
         })
     }
-}
+}   
 
 
 
@@ -34,3 +34,10 @@ export const editBlog = (id,updates) => ({
     id,
     updates
 })
+
+
+export const setBlogs = ( blogs)=> ({
+    type : 'SET_BLOGS',
+    blogs
+})
+
