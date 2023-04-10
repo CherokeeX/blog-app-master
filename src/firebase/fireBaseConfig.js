@@ -15,7 +15,7 @@ const firebaseConfig = {
   };
   
   // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
+  firebase.initializeApp(fir ebaseConfig);
 
   const database = firebase.database();
   database.ref().set({title : "blog title 1"}); 
@@ -34,7 +34,9 @@ const firebaseConfig = {
    const app = initializeApp(firebaseConfig);
 
    const database = firebase.database();
-const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+
+   export const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+
    /*database.ref().set({
     title: 'BLOK TITLE DENEME',
     ADRES : 'CEMAL PASA MH ',
@@ -169,4 +171,4 @@ setTimeout(()=>{database.ref('title').set('updeted new title3')}, 10000)
 
 // })
 
-export {database as default , googleAuthProvider, firebase}  ;
+export {database as default, firebase}
