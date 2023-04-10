@@ -22,12 +22,10 @@ export const addBlogToDatabase = (blogData = {})=> {
 
 
 
-export const removeBlog = ({ id }) => (
-    {
+export const removeBlog = (id) => (    {
         type: "REMOVE_BLOG",
         id: id
-    }
-)
+    });
 
 export const removeBlogsFromDatabase = (id)=> {
     return(dispatch)=> {
