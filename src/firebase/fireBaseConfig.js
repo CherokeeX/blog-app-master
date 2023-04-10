@@ -1,6 +1,7 @@
 
 import firebase, { initializeApp } from "firebase/app";
 import { getDatabase,  set, } from "firebase";
+import 'firebase/auth';
 
 /*import firebase from "firebase";
 
@@ -33,7 +34,7 @@ const firebaseConfig = {
    const app = initializeApp(firebaseConfig);
 
    const database = firebase.database();
-
+const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
    /*database.ref().set({
     title: 'BLOK TITLE DENEME',
     ADRES : 'CEMAL PASA MH ',
@@ -168,4 +169,4 @@ setTimeout(()=>{database.ref('title').set('updeted new title3')}, 10000)
 
 // })
 
-export {database as default}
+export {database as default , googleAuthProvider, firebase}  ;

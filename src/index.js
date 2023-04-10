@@ -6,6 +6,7 @@ import configureStore from './store/configureStore';
 import {  getBlogsFromDatabase  } from './actions/blogs'
 import { Provider } from 'react-redux';
 import './firebase/fireBaseConfig'
+import firebase from  'firebase/app'
 
 
 
@@ -35,6 +36,14 @@ const result = (<Provider store={store}><AppRouter /></Provider>);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 store.dispatch(getBlogsFromDatabase()).then(()=>{root.render(result)});
+
+firebase.auth().onAuthStateChanged(function(user){
+  if (user){
+    console.log('user logged in');
+  }else {
+    console.log('user logged out');
+  }
+})
 
 
 // If you want your app to work offline and load faster, you can change

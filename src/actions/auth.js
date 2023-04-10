@@ -1,9 +1,3 @@
-import React, { Component } from 'react'
+import {firebase, googleAuthProvider} from '../firebase/fireBaseConfig';
 
-export default class auth extends Component {
-  render() {
-    return (
-      <div> <p>deneme</p></div>
-    )
-  }
-}
+export const login = ()=>{return firebase.auth.signInWithPopup(googleAuthProvider)}
