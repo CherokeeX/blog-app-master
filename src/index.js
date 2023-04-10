@@ -40,6 +40,7 @@ store.dispatch(getBlogsFromDatabase()).then(()=>{root.render(result)});
 firebase.auth().onAuthStateChanged(function(user){
   if (user){
     console.log('user logged in');
+    console.log(user);
   }else {
     console.log('user logged out');
   }
