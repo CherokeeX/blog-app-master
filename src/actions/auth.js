@@ -9,4 +9,4 @@ export const login = ()=> {
 export const logout = ()=> {
 
   return firebase.auth().signOut();
-}
+} 
