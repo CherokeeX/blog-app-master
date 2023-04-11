@@ -48,11 +48,16 @@ const renderApp = ()=> {
 
 
 firebase.auth().onAuthStateChanged(function(user){
- renderApp () ; 
+
   if (user){
+    store.dispatch(loginAction(user.uid));
+    store.dispatch(getBlogsFromDatabase()).then(()=>{
+      renderApp () ; 
 if (history.location.pathname ==='/'){
   history.push('/blogs');
 }
+    })
+    
 
     console.log('user logged in');
     console.log(user.uid);
