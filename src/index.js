@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import AppRouter from './routers/AppRouter';
+import AppRouter , {history} from './routers/AppRouter';
 import "./App.css"
 import configureStore from './store/configureStore';
 import {  getBlogsFromDatabase  } from './actions/blogs'
@@ -39,10 +39,15 @@ store.dispatch(getBlogsFromDatabase()).then(()=>{root.render(result)});
 
 firebase.auth().onAuthStateChanged(function(user){
   if (user){
+if (history.location.pathname ==='/'){
+  history.push('/blogs');
+}
+
     console.log('user logged in');
     console.log(user);
   }else {
     console.log('user logged out');
+    history.push('/');
   }
 })
 
