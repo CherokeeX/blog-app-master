@@ -62,6 +62,7 @@ if (history.location.pathname ==='/'){
     console.log('user logged in');
     console.log(user.uid);
   }else {
+    store.dispatch(logoutAction());
 renderApp();
     console.log('user logged out');
     history.push('/');
