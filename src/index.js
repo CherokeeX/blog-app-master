@@ -7,6 +7,7 @@ import {  getBlogsFromDatabase  } from './actions/blogs'
 import { Provider } from 'react-redux';
 import './firebase/fireBaseConfig'
 import firebase from  'firebase/app'
+import { loginAction,logoutAction } from './actions/auth';
 
 
 
@@ -35,17 +36,28 @@ const store = configureStore();
 const result = (<Provider store={store}><AppRouter /></Provider>);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-store.dispatch(getBlogsFromDatabase()).then(()=>{root.render(result)});
+
+let isRendered = false;
+const renderApp = ()=> {
+  if(!isRendered){
+    store.dispatch(getBlogsFromDatabase()).then(()=>{root.render(result)});
+    isRendered = true;
+
+  }
+}
+
 
 firebase.auth().onAuthStateChanged(function(user){
+ renderApp () ; 
   if (user){
 if (history.location.pathname ==='/'){
   history.push('/blogs');
 }
 
     console.log('user logged in');
-    console.log(user);
+    console.log(user.uid);
   }else {
+renderApp();
     console.log('user logged out');
     history.push('/');
   }
