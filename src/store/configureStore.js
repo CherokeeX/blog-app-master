@@ -3,6 +3,7 @@ import blogReducer from '../reducers/blogs';
 import authReducer from '../reducers/auth';
 import thunk from 'redux-thunk';
 
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION__COMPOSE__ ||  compose ; 
 
 export default  () => {
