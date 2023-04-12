@@ -6,21 +6,19 @@ import BlogDetailsPage from "../components/BlogDetailsPage";
 import ContactPage from "../components/ContactPage";
 import NotFoundPage from "../components/NotFoundPage";
 
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Router, Switch, Route } from "react-router-dom";
 import AddBlogPAge from "../components/AddBlogPAge";
 import EditBlogPage from "../components/EditBlogPage";
 import LoginPage from "../components/LoginPage";
 import createHistory from "history/createBrowserHistory";
-import PrivateRoute from  './PrivateRoute'
+import PrivateRoute from "./PrivateRoute";
 
 export const history = createHistory();
 
-
 const AppRouter = () => {
   return (
-    <BrowserRouter>
+    <Router history={history}>
       <div>
-        <Header></Header>
         <Switch>
           <Route path="/" component={LoginPage} exact />
           <PrivateRoute path="/blogs" component={BlogListPage} exact />
@@ -31,7 +29,7 @@ const AppRouter = () => {
           <Route component={NotFoundPage} />
         </Switch>
       </div>
-    </BrowserRouter>
+    </Router>
   );
 };
 

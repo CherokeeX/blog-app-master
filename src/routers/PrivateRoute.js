@@ -20,10 +20,22 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { Redirect, Route } from 'react-router-dom';
+import Header from '../components/Header';
+
 
 const PrivateRoute = ({isAutenticated,component: Component,...rest}) => (
-    <Route {...rest} component={(props)=>(isAutenticated ? 
-        (<Component {...props}/>):
+    <Route {...rest} component={(props)=>(isAutenticated ?  
+        
+        (
+            <div>
+               
+               <Header></Header>
+                 <Component {...props}/>
+            </div>
+       
+        
+        
+        ):
         (<Redirect to="/"/>)
         
         )}/>

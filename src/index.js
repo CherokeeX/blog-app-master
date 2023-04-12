@@ -52,8 +52,8 @@ firebase.auth().onAuthStateChanged(function(user){
   if (user){
     store.dispatch(loginAction(user.uid));
     store.dispatch(getBlogsFromDatabase()).then(()=>{
-      renderApp () ; 
-if (history.location.pathname ==='/'){
+      store.dispatch(getBlogsFromDatabase()).then(()=>{root.render(result)}) ; 
+if (history.location.pathname === '/'){
   history.push('/blogs');
 }
     })
