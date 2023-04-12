@@ -8,9 +8,10 @@ export const addBlog = (blog) => ({
 
 export const addBlogToDatabase = (blogData = {})=> {
 
-    return(dispatch)=>{
+    return(dispatch, getState)=>{
+        const uid = getState().auth.uid;
         const {title='', description='',dateAdded=0} =blogData;
-        const blog = {title,description,dateAdded};
+        const blog = {title,description,dateAdded,uid};
         database.ref('blogs').push(blog).then((res)=> {
             dispatch(addBlog({
                 id: res.key,
