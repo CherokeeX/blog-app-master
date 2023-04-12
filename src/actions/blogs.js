@@ -56,14 +56,20 @@ export const setBlogs = ( blogs)=> ({
     blogs
 })
 export const getBlogsFromDatabase = ()=>{
-    return (dispatch) => {
+    return (dispatch,getState) => {
+        const uid = getState().auth.uid;
         return database.ref('blogs').once('value').then((snapshot)=>{
             const blogs = [ ];
+
+
             snapshot.forEach((blog)=>{
-                blogs.push({
+
+                const result = blog.val();
+                if(result.uid==uid){blogs.push({
                     id: blog.key,
-                    ...blog.val()
-                })
+                   ...result
+                })}
+                
             })
      dispatch(setBlogs(blogs));
         })
